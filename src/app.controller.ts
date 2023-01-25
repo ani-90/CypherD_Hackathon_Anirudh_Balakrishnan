@@ -1,18 +1,7 @@
-// import { Controller, Get } from '@nestjs/common';
-// import { AppService } from './app.service';
-
-// @Controller()
-// export class AppController {
-//   constructor(private readonly appService: AppService) {}
-
-//   @Get('/')
-//   async getHello(): Promise<string> {
-//     return this.appService.getHello();
-//   }
-// }
 
 
-import {Controller,Get,Post,Body,Param} from '@nestjs/common'
+
+import {Controller,Get,Post,Body,Param,Delete} from '@nestjs/common'
 import { watchlistservice } from './app.service'
 
 @Controller('tokens')
@@ -41,5 +30,11 @@ export class WatchlistController{
     return this.wls.getByID(prodId)
   }
 
-}
+  
+  @Delete(':id')
+  removeProduct(@Param('id') prodId: string) {
+      return this.wls.deleteItem(prodId);
+      
 
+}
+}
